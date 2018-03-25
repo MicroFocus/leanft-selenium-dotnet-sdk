@@ -3,6 +3,7 @@ using OpenQA.Selenium.Internal;
 using System;
 using System.IO;
 using System.Reflection;
+using System.Text.RegularExpressions;
 
 namespace LeanFTForSelenium
 {
@@ -50,6 +51,11 @@ namespace LeanFTForSelenium
             var windowSize = driver.Manage().Window.Size;
 
             return !((elementSize.Width + elementLocation.X > windowSize.Width) || (elementSize.Height + elementLocation.Y > windowSize.Height));
+        }
+
+        internal static string FlagsToString(Regex pattern)
+        {
+            return pattern.Options.HasFlag(RegexOptions.IgnoreCase) ? "i" : "";
         }
     }
 }

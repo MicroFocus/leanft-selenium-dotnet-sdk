@@ -6,36 +6,40 @@ namespace LeanFTForSelenium
 {
     internal class ByRegex : By
     {
-        private readonly string jsScript = InternalUtils.GetBrowserScript("GetElementsByRegExp.js");
-        private string propertyName;
-        private string tagsFilter;
-        private Regex pattern;
+        private readonly string _jsScript = InternalUtils.GetScript("GetElementsByRegExp.js");
+        private readonly string _propertyName;
+        private readonly string _tagsFilter;
+        private readonly Regex _pattern;
 
         internal ByRegex(string propertyName, Regex pattern, string tagsFilter)
         {
-            this.propertyName = propertyName;
-            this.pattern = pattern;
-            this.tagsFilter = tagsFilter;
+            _propertyName = propertyName;
+            _pattern = pattern;
+            _tagsFilter = tagsFilter;
         }
 
-        internal ByRegex(string propertyName, Regex pattern) : this(propertyName, pattern, null) { }
+        internal ByRegex(string propertyName, Regex pattern) : this(propertyName, pattern, null)
+        {
+        }
 
         public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
         {
             ReadOnlyCollection<IWebElement> elements;
 
-            IJavaScriptExecutor executor = InternalUtils.GetExecutor(context);
-
-            if (context is IWebElement){
+            var executor = InternalUtils.GetExecutor(context);
+            if (context is IWebElement)
+            {
                 // In case element is the context, pass it to the method as the root
                 // element to search in.
-                elements = FindElementsByRegex(executor, (IWebElement)context);
-            } else {
+                elements = FindElementsByRegex(executor, (IWebElement) context);
+            }
+            else
+            {
                 // In case the driver is the root element
                 elements = FindElementsByRegex(executor, null);
             }
 
-            Description = string.Format("LeanFTForSelenium.By.{0}: {1}", propertyName, pattern.ToString());
+            Description = string.Format("LeanFTForSelenium.By.{0}: {1}", _propertyName, _pattern.ToString());
 
             return elements;
         }
@@ -47,14 +51,13 @@ namespace LeanFTForSelenium
 
         private ReadOnlyCollection<IWebElement> FindElementsByRegex(IJavaScriptExecutor executor, IWebElement element)
         {
-            ReadOnlyCollection<IWebElement> elements =
-                (ReadOnlyCollection<IWebElement>)executor.ExecuteScript(
-                    jsScript,
-                    element,
-                    tagsFilter,
-                    propertyName,
-                    pattern.ToString(),
-                    InternalUtils.FlagsToString(pattern));
+            var elements = (ReadOnlyCollection<IWebElement>) executor.ExecuteScript(
+                _jsScript,
+                element,
+                _tagsFilter,
+                _propertyName,
+                _pattern.ToString(),
+                InternalUtils.FlagsToString(_pattern));
 
             return elements;
         }

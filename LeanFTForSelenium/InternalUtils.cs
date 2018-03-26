@@ -9,15 +9,15 @@ namespace LeanFTForSelenium
 {
     internal static class InternalUtils
     {
-        internal static string GetBrowserScript(string scriptName)
+        internal static string GetScript(string scriptName)
         {
             string result;
 
             var assembly = Assembly.GetExecutingAssembly();
             var resourceName = "LeanFTForSelenium.BrowserScripts." + scriptName;
 
-            using (Stream stream = assembly.GetManifestResourceStream(resourceName))
-            using (StreamReader reader = new StreamReader(stream))
+            using (var stream = assembly.GetManifestResourceStream(resourceName))
+            using (var reader = new StreamReader(stream))
             {
                 result = reader.ReadToEnd();
             }
@@ -27,19 +27,21 @@ namespace LeanFTForSelenium
 
         internal static IJavaScriptExecutor GetExecutor(ISearchContext context)
         {
-            if (context is IJavaScriptExecutor)
+            // If the context is the executor, return itself.
+            var executor = context as IJavaScriptExecutor;
+            if (executor != null)
             {
-                return (IJavaScriptExecutor)context;
+                return executor;
             }
 
-            if (!(context is IWebElement))
+            // If the context does not hold a WebDriver, we won't be able to return its driver.
+            var wrapsDriver = context as IWrapsDriver;
+            if (wrapsDriver == null)
             {
-                throw new InvalidOperationException("Cannot find driver of this element.");
+                throw new InvalidOperationException("Context does not have an IWebDriver.");
             }
 
-            IWebDriver driver = ((IWrapsDriver)context).WrappedDriver;
-
-            return (IJavaScriptExecutor)driver;
+            return (IJavaScriptExecutor) wrapsDriver.WrappedDriver;
         }
 
         internal static bool IsVisible(IWebElement element)

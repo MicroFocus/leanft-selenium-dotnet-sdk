@@ -11,8 +11,8 @@ namespace LeanFTForSelenium
     {
         const int ExtraWaitTimeInMiliSec = 500;
         const int DefaultHighlightTimeInMiliSec = 3000;
-        static string HighlightFunction = InternalUtils.GetBrowserScript("Highlight.js");
-        static string ScrollIntoViewFunction = InternalUtils.GetBrowserScript("ScrollIntoView.js");
+        static readonly string HighlightFunction = InternalUtils.GetScript("Highlight.js");
+        static readonly string ScrollIntoViewFunction = InternalUtils.GetScript("ScrollIntoView.js");
 
         /// <summary>
         /// Highlights the selenium element in the browser.
@@ -46,7 +46,7 @@ namespace LeanFTForSelenium
                 return;
             }
 
-            IJavaScriptExecutor executor = InternalUtils.GetExecutor(element);
+            var executor = InternalUtils.GetExecutor(element);
 
             // Scroll into the view.
             ScrollIntoView(element);
@@ -69,7 +69,7 @@ namespace LeanFTForSelenium
                 throw new ArgumentNullException("Cannot scroll into view null object.");
             }
 
-            IJavaScriptExecutor executor = InternalUtils.GetExecutor(element);
+            var executor = InternalUtils.GetExecutor(element);
 
             // Scroll into the view.
             if (!InternalUtils.IsVisible(element))

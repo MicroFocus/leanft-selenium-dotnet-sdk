@@ -82,5 +82,111 @@ namespace LeanFTForSelenium
 
             return new ByRegex("tagName", tagName);
         }
+
+        /// <summary>
+        /// Returns a locator that locates elements by the provided role parameter.
+        /// </summary>
+        /// <param name="role">The role of the elements.</param>
+        /// <returns>A locator that locates elements with the given role.</returns>
+        public static By Role(string role)
+        {
+            if (string.IsNullOrEmpty(role))
+            {
+                throw new ArgumentNullException("Cannot find elements when role is null or empty.");
+            }
+
+            return new ByXPath("role", role);
+        }
+
+        /// <summary>
+        /// Returns a locator that locates elements by the provided regular expression role parameter.
+        /// </summary>
+        /// <param name="role">The role of the elements in the form of a regular expression.</param>
+        /// <returns>A locator that locates elements with the given role.</returns>
+        public static By Role(Regex role)
+        {
+            if (role == null)
+            {
+                throw new ArgumentNullException("Cannot find elements when role is null.");
+            }
+
+            return new ByRegex("role", role);
+        }
+
+        /// <summary>
+        /// Returns a locator that locates elements by the provided type parameter.
+        /// </summary>
+        /// <param name="type">The type of the elements.</param>
+        /// <returns>A locator that locates elements with the given type.</returns>
+        public static By Type(string type)
+        {
+            if (string.IsNullOrEmpty(type))
+            {
+                throw new ArgumentNullException("Cannot find elements when type is null or empty.");
+            }
+
+            return new ByXPath("type", type);
+        }
+
+        /// <summary>
+        /// Returns a locator that locates elements by the provided regular expression type parameter.
+        /// </summary>
+        /// <param name="type">The role of the elements in the form of a regular expression.</param>
+        /// <returns>A locator that locates elements with the given type.</returns>
+        public static By Type(Regex type)
+        {
+            if (type == null)
+            {
+                throw new ArgumentNullException("Cannot find elements when type is null.");
+            }
+
+            return new ByRegex("type", type);
+        }
+
+        /// <summary>
+        /// Returns a locator that locates elements by the provided visibleText parameter.
+        /// </summary>
+        /// <param name="visibleText">The visible text of the elements.</param>
+        /// <returns>A locator that locates elements by the visible text.</returns>
+        public static By VisibleText(string visibleText)
+        {
+            if (string.IsNullOrEmpty(visibleText))
+            {
+                throw new ArgumentNullException("Cannot find elements when visibleText is null or empty.");
+            }
+
+            return new ByVisibleText(visibleText);
+        }
+
+        /// <summary>
+        /// Returns a locator that locates element by the provided regular expression visibleText parameter.
+        /// </summary>
+        /// <param name="visibleText">The visible text of the elements in the form of a regular expression.</param>
+        /// <returns>A locator that locates elements by the visible text.</returns>
+        public static By VisibleText(Regex visibleText)
+        {
+            if (visibleText == null)
+            {
+                throw new ArgumentNullException("Cannot find elements when visibleText is null.");
+            }
+
+            return new ByVisibleText(visibleText);
+        }
+
+        /// <summary>
+        /// Returns a locator that locates elements by the provided regular expression visibleText that is case insensitive.
+        /// </summary>
+        /// <param name="visibleText">The visible text of the elements in the form of a regular expression.</param>
+        /// <param name="regexOptions">The regular expression options. For example, RegexOptions.IgnoreCase.</param>
+        /// <returns>A locator that locates elements by the visible text with the given regular expression options.</returns>
+        public static By VisibleText(Regex visibleText, RegexOptions regexOptions)
+        {
+            if (visibleText == null)
+            {
+                throw new ArgumentNullException("Cannot find elements when visibleText is null.");
+            }
+
+            return new ByVisibleText(new Regex(visibleText.ToString(), regexOptions));
+        }
     }
 }

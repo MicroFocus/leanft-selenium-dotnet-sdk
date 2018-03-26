@@ -18,7 +18,12 @@ namespace LeanFTForSelenium
         static readonly string ScrollIntoViewFunction = InternalUtils.GetScript("ScrollIntoView.js");
         static readonly string SnapshotFunction = InternalUtils.GetScript("Snapshot.js");
 
-        public static Image GetSnapshot(IWebElement element)
+        /// <summary>
+        /// Returns a snapshot (image) of the selenium element.
+        /// </summary>
+        /// <param name="element">The element to retrieve a snapshot for.</param>
+        /// <returns>A snapshot of the element.</returns>
+        public static Image GetSnapshot(this IWebElement element)
         {
             if (element == null)
             {
@@ -61,7 +66,7 @@ namespace LeanFTForSelenium
         /// Highlights the selenium element in the browser.
         /// </summary>
         /// <param name="element">The web element to highlight.</param>
-        public static void Highlight(IWebElement element)
+        public static void Highlight(this IWebElement element)
         {
             Highlight(element, DefaultHighlightTimeInMiliSec);
         }
@@ -71,7 +76,7 @@ namespace LeanFTForSelenium
         /// </summary>
         /// <param name="element">The web element to highlight.</param>
         /// <param name="time">The time (in milliseconds) that the element will be highlighted. In case of a negative number, the method throws an ArgumentException.</param>
-        public static void Highlight(IWebElement element, int time)
+        public static void Highlight(this IWebElement element, int time)
         {
             if (element == null)
             {
@@ -104,7 +109,7 @@ namespace LeanFTForSelenium
         /// Scrolls the page to make the web element visible.
         /// </summary>
         /// <param name="element">The web element to scroll to.</param>
-        public static void ScrollIntoView(IWebElement element)
+        public static void ScrollIntoView(this IWebElement element)
         {
             if (element == null)
             {

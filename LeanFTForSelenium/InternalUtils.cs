@@ -1,6 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 using System;
+using System.Drawing;
 using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
@@ -23,6 +24,17 @@ namespace LeanFTForSelenium
             }
 
             return result;
+        }
+
+        internal static IWebDriver GetWebDriver(IWebElement element)
+        {
+            var wrapsDriver = element as IWrapsDriver;
+            if (wrapsDriver == null)
+            {
+                return null;
+            }
+
+            return wrapsDriver.WrappedDriver;
         }
 
         internal static IJavaScriptExecutor GetExecutor(ISearchContext context)
@@ -49,15 +61,26 @@ namespace LeanFTForSelenium
             var elementSize = element.Size;
             var elementLocation = element.Location;
 
-            var driver = ((IWrapsDriver)element).WrappedDriver;
+            var driver = ((IWrapsDriver) element).WrappedDriver;
             var windowSize = driver.Manage().Window.Size;
 
-            return !((elementSize.Width + elementLocation.X > windowSize.Width) || (elementSize.Height + elementLocation.Y > windowSize.Height));
+            return !((elementSize.Width + elementLocation.X > windowSize.Width) ||
+                     (elementSize.Height + elementLocation.Y > windowSize.Height));
         }
 
         internal static string FlagsToString(Regex pattern)
         {
             return pattern.Options.HasFlag(RegexOptions.IgnoreCase) ? "i" : "";
+        }
+
+        internal static Image Base64ToImage(string base64String)
+        {
+            var imageBytes = Convert.FromBase64String(base64String);
+            var memoryStream = new MemoryStream(imageBytes, 0, imageBytes.Length);
+            memoryStream.Write(imageBytes, 0, imageBytes.Length);
+            var image = Image.FromStream(memoryStream, true);
+
+            return image;
         }
     }
 }

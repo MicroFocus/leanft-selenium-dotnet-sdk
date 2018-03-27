@@ -188,5 +188,15 @@ namespace LeanFTForSelenium
 
             return new ByVisibleText(new Regex(visibleText.ToString(), regexOptions));
         }
+
+        /// <summary>
+        /// Returns a locator that locates elements that are either visible or not, depending on the parameter passed.
+        /// </summary>
+        /// <param name="visible">Whether the elements are visible.</param>
+        /// <returns>A locator that locates elements that are either visible or not, depending on the parameter passed.</returns>
+        public static By Visible(bool visible)
+        {
+            return new ByVisible(visible);
+        }
     }
 }

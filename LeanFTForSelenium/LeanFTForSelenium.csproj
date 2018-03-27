@@ -70,14 +70,18 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="By.cs" />
+    <Compile Include="ByStyles.cs" />
+    <Compile Include="ByAttributes.cs" />
     <Compile Include="ByRegex.cs" />
     <Compile Include="ByVisible.cs" />
     <Compile Include="ByVisibleText.cs" />
     <Compile Include="ByXPath.cs" />
     <Compile Include="InternalUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\ByStylesUnitTests.cs" />
     <Compile Include="UnitTests\ByRegexUnitTests.cs" />
     <Compile Include="UnitTests\ByUnitTests.cs" />
+    <Compile Include="UnitTests\ByAttributesUnitTests.cs" />
     <Compile Include="UnitTests\ByVisibleUnitTests.cs" />
     <Compile Include="UnitTests\ByVisibleTextUnitTests.cs" />
     <Compile Include="UnitTests\ByXPathUnitTests.cs" />

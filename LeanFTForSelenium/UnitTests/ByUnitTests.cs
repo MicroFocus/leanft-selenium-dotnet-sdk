@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 
@@ -168,6 +169,120 @@ namespace LeanFTForSelenium.UnitTests
         {
             var by = By.Visible(true);
             Assert.IsInstanceOf<ByVisible>(by);
+        }
+
+        [Test]
+        public void Attributes_AttributesIsNull_ArgumentNullExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentNullException>(() => By.Attributes(null));
+        }
+
+        [Test]
+        public void Attributes_AttributesIsEmpty_ArgumentExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentException>(() => By.Attributes(new Dictionary<string, object>()));
+        }
+
+        [Test]
+        public void Attributes_ShouldReturnByAttributesObject()
+        {
+            var by = By.Attributes(new Dictionary<string, object> {{"a", "1"}});
+            Assert.IsInstanceOf<ByAttributes>(by);
+        }
+
+        [Test]
+        public void Attribute_StringValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentNullException>(() => By.Attribute(null, ""));
+        }
+
+        [Test]
+        public void Attribute_StringValue_NameIsEmpty_ArgumentExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentException>(() => By.Attribute("", ""));
+        }
+
+        [Test]
+        public void Attribute_StringValue_ShouldReturnByAttributesObject()
+        {
+            var by = By.Attribute("a", "1");
+            Assert.IsInstanceOf<ByAttributes>(by);
+        }
+
+        [Test]
+        public void Attribute_RegexValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentNullException>(() => By.Attribute(null, new Regex("")));
+        }
+
+        [Test]
+        public void Attribute_RegexValue_NameIsEmpty_ArgumentExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentException>(() => By.Attribute("", new Regex("")));
+        }
+
+        [Test]
+        public void Attribute_RegexValue_ShouldReturnByAttributesObject()
+        {
+            var by = By.Attribute("a", new Regex(""));
+            Assert.IsInstanceOf<ByAttributes>(by);
+        }
+
+        [Test]
+        public void Styles_StylesIsNull_ArgumentNullExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentNullException>(() => By.Styles(null));
+        }
+
+        [Test]
+        public void Styles_StylesIsEmpty_ArgumentExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentException>(() => By.Styles(new Dictionary<string, object>()));
+        }
+
+        [Test]
+        public void Styles_ShouldReturnByStylesObject()
+        {
+            var by = By.Styles(new Dictionary<string, object> { { "a", "1" } });
+            Assert.IsInstanceOf<ByStyles>(by);
+        }
+
+        [Test]
+        public void Style_StringValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentNullException>(() => By.Style(null, ""));
+        }
+
+        [Test]
+        public void Style_StringValue_NameIsEmpty_ArgumentExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentException>(() => By.Style("", ""));
+        }
+
+        [Test]
+        public void Style_StringValue_ShouldReturnByStylesObject()
+        {
+            var by = By.Style("a", "1");
+            Assert.IsInstanceOf<ByStyles>(by);
+        }
+
+        [Test]
+        public void Style_RegexValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentNullException>(() => By.Style(null, new Regex("")));
+        }
+
+        [Test]
+        public void Style_RegexValue_NameIsEmpty_ArgumentExceptionIsThrown()
+        {
+            Assert.Throws<ArgumentException>(() => By.Style("", new Regex("")));
+        }
+
+        [Test]
+        public void Style_RegexValue_ShouldReturnByStylesObject()
+        {
+            var by = By.Style("a", new Regex(""));
+            Assert.IsInstanceOf<ByStyles>(by);
         }
     }
 }

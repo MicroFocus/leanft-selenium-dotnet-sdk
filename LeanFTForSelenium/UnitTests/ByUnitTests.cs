@@ -162,5 +162,12 @@ namespace LeanFTForSelenium.UnitTests
             var by = By.VisibleText(new Regex("text"), RegexOptions.IgnoreCase);
             Assert.IsInstanceOf<ByVisibleText>(by);
         }
+
+        [Test]
+        public void Visible_ShouldReturnByVisibleObject()
+        {
+            var by = By.Visible(true);
+            Assert.IsInstanceOf<ByVisible>(by);
+        }
     }
 }

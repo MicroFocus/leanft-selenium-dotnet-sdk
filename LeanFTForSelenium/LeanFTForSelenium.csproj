@@ -70,6 +70,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="By.cs" />
+    <Compile Include="ByAny.cs" />
     <Compile Include="ByStyles.cs" />
     <Compile Include="ByAttributes.cs" />
     <Compile Include="ByRegex.cs" />
@@ -84,6 +85,7 @@
     <Compile Include="UnitTests\ByAttributesUnitTests.cs" />
     <Compile Include="UnitTests\ByVisibleUnitTests.cs" />
     <Compile Include="UnitTests\ByVisibleTextUnitTests.cs" />
+    <Compile Include="UnitTests\ByAnyUnitTests.cs" />
     <Compile Include="UnitTests\ByXPathUnitTests.cs" />
     <Compile Include="UnitTests\UtilsUnitTests.cs" />
     <Compile Include="Utils.cs" />

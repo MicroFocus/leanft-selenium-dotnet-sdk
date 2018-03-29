@@ -34,7 +34,7 @@ namespace LFT.Selenium
                 webElement,
                 _nonRegex);
 
-            Description = string.Format("LeanFTForSelenium.By.VisibleText: {0}", _pattern);
+            Description = string.Format("LFT.Selenium.By.VisibleText: {0}", _pattern);
 
             return elements;
         }

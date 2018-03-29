@@ -15,7 +15,7 @@ namespace LFT.Selenium
 
         protected override string GetDescription()
         {
-            return "LeanFTForSelenium.By.Attributes";
+            return "LFT.Selenium.By.Attributes";
         }
     }
 }

@@ -30,7 +30,7 @@ namespace LFT.Selenium
             var executor = InternalUtils.GetExecutor(context);
             elements = FindElementsByRegex(executor, context as IWebElement);
 
-            Description = string.Format("LeanFTForSelenium.By.{0}: {1}", _propertyName, _pattern);
+            Description = string.Format("LFT.Selenium.By.{0}: {1}", _propertyName, _pattern);
 
             return elements;
         }

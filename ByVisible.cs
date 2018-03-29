@@ -23,7 +23,7 @@ namespace LFT.Selenium
                 webElement,
                 _visible);
 
-            Description = string.Format("LeanFTForSelenium.By.Visible: {0}", _visible);
+            Description = string.Format("LFT.Selenium.By.Visible: {0}", _visible);
 
             return elements;
         }

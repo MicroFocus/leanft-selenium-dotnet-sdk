@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
@@ -7,7 +8,7 @@ namespace LeanFTForSelenium
 {
     internal class ByAttributes : By
     {
-        private readonly string _jsScript = InternalUtils.GetScript("GetElementsByAttributes.js");
+        private readonly Lazy<string> _jsScript = new Lazy<string>(() => InternalUtils.GetScript("GetElementsByAttributes.js"));
         private readonly IDictionary<string, IDictionary<string, string>> _attributes = new Dictionary<string, IDictionary<string, string>>();
 
         public ByAttributes(IDictionary<string, object> attributes)
@@ -32,7 +33,7 @@ namespace LeanFTForSelenium
             var webElement = context as IWebElement;
 
             var elements = (ReadOnlyCollection<IWebElement>)executor.ExecuteScript(
-                _jsScript,
+                _jsScript.Value,
                 webElement,
                 _attributes);
 

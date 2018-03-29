@@ -14,9 +14,9 @@ namespace LeanFTForSelenium
         const int ExtraWaitTimeInMiliSec = 500;
         const int DefaultHighlightTimeInMiliSec = 3000;
         const string PrepareForScreenshotScript = "var rect = arguments[0].getBoundingClientRect();return {left: rect.left,top:rect.top,width:rect.width,height:rect.height};";
-        static readonly string HighlightFunction = InternalUtils.GetScript("Highlight.js");
-        static readonly string ScrollIntoViewFunction = InternalUtils.GetScript("ScrollIntoView.js");
-        static readonly string SnapshotFunction = InternalUtils.GetScript("Snapshot.js");
+        private static readonly Lazy<string> HighlightFunction = new Lazy<string>(() => InternalUtils.GetScript("Highlight.js"));
+        private static readonly Lazy<string> ScrollIntoViewFunction = new Lazy<string>(() => InternalUtils.GetScript("ScrollIntoView.js"));
+        private static readonly Lazy<string> SnapshotFunction = new Lazy<string>(() => InternalUtils.GetScript("Snapshot.js"));
 
         /// <summary>
         /// Returns a snapshot (image) of the selenium element.
@@ -40,10 +40,10 @@ namespace LeanFTForSelenium
             }
             else
             {
-                elementLocationAndSize = (Dictionary<string, object>) executor.ExecuteScript(SnapshotFunction, element);
+                elementLocationAndSize = (Dictionary<string, object>) executor.ExecuteScript(SnapshotFunction.Value, element);
             }
 
-            Rectangle elementRectangle = new Rectangle(
+            var elementRectangle = new Rectangle(
                 Convert.ToInt32(elementLocationAndSize["left"]),
                 Convert.ToInt32(elementLocationAndSize["top"]),
                 Convert.ToInt32(elementLocationAndSize["width"]),
@@ -99,7 +99,7 @@ namespace LeanFTForSelenium
             ScrollIntoView(element);
 
             // Highlight the element.
-            executor.ExecuteScript(HighlightFunction, element, time);
+            executor.ExecuteScript(HighlightFunction.Value, element, time);
 
             // Wait for the highlight to finish.
             Thread.Sleep(time + ExtraWaitTimeInMiliSec);
@@ -121,7 +121,7 @@ namespace LeanFTForSelenium
             // Scroll into the view.
             if (!InternalUtils.IsVisible(element))
             {
-                executor.ExecuteScript(ScrollIntoViewFunction, element);
+                executor.ExecuteScript(ScrollIntoViewFunction.Value, element);
             }
         }
     }

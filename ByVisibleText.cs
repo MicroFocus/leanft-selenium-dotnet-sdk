@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
@@ -6,7 +7,7 @@ namespace LeanFTForSelenium
 {
     internal class ByVisibleText : By
     {
-        private readonly string _jsScript = InternalUtils.GetScript("GetElementsByVisibleText.js");
+        private readonly Lazy<string> _jsScript = new Lazy<string>(() => InternalUtils.GetScript("GetElementsByVisibleText.js"));
         private readonly Regex _pattern;
         private readonly bool _nonRegex;
 
@@ -27,13 +28,13 @@ namespace LeanFTForSelenium
             var webElement = context as IWebElement;
 
             var elements = (ReadOnlyCollection<IWebElement>) executor.ExecuteScript(
-                _jsScript,
+                _jsScript.Value,
                 _pattern.ToString(),
                 InternalUtils.FlagsToString(_pattern),
                 webElement,
                 _nonRegex);
 
-            Description = string.Format("LeanFTForSelenium.By.VisibleText: {0}", _pattern.ToString());
+            Description = string.Format("LeanFTForSelenium.By.VisibleText: {0}", _pattern);
 
             return elements;
         }

@@ -1,4 +1,5 @@
-﻿using OpenQA.Selenium;
+﻿using System;
+using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
@@ -6,7 +7,7 @@ namespace LeanFTForSelenium
 {
     internal class ByRegex : By
     {
-        private readonly string _jsScript = InternalUtils.GetScript("GetElementsByRegExp.js");
+        private readonly Lazy<string> _jsScript = new Lazy<string>(() => InternalUtils.GetScript("GetElementsByRegExp.js"));
         private readonly string _propertyName;
         private readonly string _tagsFilter;
         private readonly Regex _pattern;
@@ -52,7 +53,7 @@ namespace LeanFTForSelenium
         private ReadOnlyCollection<IWebElement> FindElementsByRegex(IJavaScriptExecutor executor, IWebElement element)
         {
             var elements = (ReadOnlyCollection<IWebElement>) executor.ExecuteScript(
-                _jsScript,
+                _jsScript.Value,
                 element,
                 _tagsFilter,
                 _propertyName,

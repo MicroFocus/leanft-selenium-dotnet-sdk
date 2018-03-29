@@ -229,14 +229,9 @@ namespace LFT.Selenium
 
         private static By Attribute(string name, object value)
         {
-            if (name == null)
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("Cannot find elements when the name of the attribute is null.");
-            }
-
-            if (name.Length == 0)
-            {
-                throw new ArgumentException("Cannot find elements when the name of the attribute is empty.");
+                throw new ArgumentException("Cannot find elements when the name of the attribute is null or empty.");
             }
 
             return new ByAttributes(new Dictionary<string, object> {{name, value}});
@@ -286,14 +281,9 @@ namespace LFT.Selenium
 
         private static By Style(string name, object value)
         {
-            if (name == null)
+            if (string.IsNullOrWhiteSpace(name))
             {
-                throw new ArgumentNullException("Cannot find elements when the name of the style is null.");
-            }
-
-            if (name.Length == 0)
-            {
-                throw new ArgumentException("Cannot find elements when the name of the style is empty.");
+                throw new ArgumentException("Cannot find elements when the name of the style is null or empty.");
             }
 
             return new ByStyles(new Dictionary<string, object> {{name, value}});

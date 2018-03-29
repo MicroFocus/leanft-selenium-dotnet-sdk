@@ -178,9 +178,9 @@ namespace LFT.Selenium.UnitTests
         }
 
         [Test]
-        public void Attribute_StringValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        public void Attribute_StringValue_NameIsNull_ArgumentExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => By.Attribute(null, ""));
+            Assert.Throws<ArgumentException>(() => By.Attribute(null, ""));
         }
 
         [Test]
@@ -197,9 +197,9 @@ namespace LFT.Selenium.UnitTests
         }
 
         [Test]
-        public void Attribute_RegexValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        public void Attribute_RegexValue_NameIsNull_ArgumentExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => By.Attribute(null, new Regex("")));
+            Assert.Throws<ArgumentException>(() => By.Attribute(null, new Regex("")));
         }
 
         [Test]
@@ -235,9 +235,9 @@ namespace LFT.Selenium.UnitTests
         }
 
         [Test]
-        public void Style_StringValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        public void Style_StringValue_NameIsNull_ArgumentExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => By.Style(null, ""));
+            Assert.Throws<ArgumentException>(() => By.Style(null, ""));
         }
 
         [Test]
@@ -254,9 +254,9 @@ namespace LFT.Selenium.UnitTests
         }
 
         [Test]
-        public void Style_RegexValue_NameIsNull_ArgumentNullExceptionIsThrown()
+        public void Style_RegexValue_NameIsNull_ArgumentExceptionIsThrown()
         {
-            Assert.Throws<ArgumentNullException>(() => By.Style(null, new Regex("")));
+            Assert.Throws<ArgumentException>(() => By.Style(null, new Regex("")));
         }
 
         [Test]

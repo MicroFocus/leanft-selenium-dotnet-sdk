@@ -93,7 +93,7 @@ namespace LeanFTForSelenium
         /// <returns>A locator that locates elements with the given role.</returns>
         public static By Role(string role)
         {
-            if (string.IsNullOrEmpty(role))
+            if (string.IsNullOrWhiteSpace(role))
             {
                 throw new ArgumentNullException("Cannot find elements when role is null or empty.");
             }
@@ -123,7 +123,7 @@ namespace LeanFTForSelenium
         /// <returns>A locator that locates elements with the given type.</returns>
         public static By Type(string type)
         {
-            if (string.IsNullOrEmpty(type))
+            if (string.IsNullOrWhiteSpace(type))
             {
                 throw new ArgumentNullException("Cannot find elements when type is null or empty.");
             }
@@ -153,7 +153,7 @@ namespace LeanFTForSelenium
         /// <returns>A locator that locates elements by the visible text.</returns>
         public static By VisibleText(string visibleText)
         {
-            if (string.IsNullOrEmpty(visibleText))
+            if (string.IsNullOrWhiteSpace(visibleText))
             {
                 throw new ArgumentNullException("Cannot find elements when visibleText is null or empty.");
             }

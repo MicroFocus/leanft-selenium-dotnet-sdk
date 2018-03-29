@@ -177,22 +177,6 @@ namespace LeanFTForSelenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression visibleText that is case insensitive.
-        /// </summary>
-        /// <param name="visibleText">The visible text of the elements in the form of a regular expression.</param>
-        /// <param name="regexOptions">The regular expression options. For example, RegexOptions.IgnoreCase.</param>
-        /// <returns>A locator that locates elements by the visible text with the given regular expression options.</returns>
-        public static By VisibleText(Regex visibleText, RegexOptions regexOptions)
-        {
-            if (visibleText == null)
-            {
-                throw new ArgumentNullException("Cannot find elements when visibleText is null.");
-            }
-
-            return new ByVisibleText(new Regex(visibleText.ToString(), regexOptions));
-        }
-
-        /// <summary>
         /// Returns a locator that locates elements that are either visible or not, depending on the parameter passed.
         /// </summary>
         /// <param name="visible">Whether the elements are visible.</param>

@@ -152,19 +152,6 @@ namespace LeanFTForSelenium.UnitTests
         }
 
         [Test]
-        public void VisibleText_RegexWithOptions_VisibleTextIsNull_ArgumentNullExceptionIsThrown()
-        {
-            Assert.Throws<ArgumentNullException>(() => By.VisibleText(null, RegexOptions.IgnoreCase));
-        }
-
-        [Test]
-        public void VisibleText_RegexWithOptions_ShouldReturnByVisibleTextObject()
-        {
-            var by = By.VisibleText(new Regex("text"), RegexOptions.IgnoreCase);
-            Assert.IsInstanceOf<ByVisibleText>(by);
-        }
-
-        [Test]
         public void Visible_ShouldReturnByVisibleObject()
         {
             var by = By.Visible(true);

@@ -59,6 +59,8 @@ namespace LeanFTForSelenium
                     elementRectangle, GraphicsUnit.Pixel);
             }
 
+            image.Dispose();
+
             return target;
         }
 

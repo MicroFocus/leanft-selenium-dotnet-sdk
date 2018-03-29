@@ -28,19 +28,9 @@ namespace LeanFTForSelenium
             ReadOnlyCollection<IWebElement> elements;
 
             var executor = InternalUtils.GetExecutor(context);
-            if (context is IWebElement)
-            {
-                // In case element is the context, pass it to the method as the root
-                // element to search in.
-                elements = FindElementsByRegex(executor, (IWebElement) context);
-            }
-            else
-            {
-                // In case the driver is the root element
-                elements = FindElementsByRegex(executor, null);
-            }
+            elements = FindElementsByRegex(executor, context as IWebElement);
 
-            Description = string.Format("LeanFTForSelenium.By.{0}: {1}", _propertyName, _pattern.ToString());
+            Description = string.Format("LeanFTForSelenium.By.{0}: {1}", _propertyName, _pattern);
 
             return elements;
         }

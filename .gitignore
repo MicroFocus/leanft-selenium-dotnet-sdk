@@ -1,5 +1,4 @@
-LeanFTForSelenium/bin/
-LeanFTForSelenium/obj/
-LeanFTForSelenium/packages/
-LeanFTForSelenium/.vs/
+bin/
+obj/
+packages/
 .vs/

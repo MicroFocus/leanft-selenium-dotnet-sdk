@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="By.cs" />
     <Compile Include="ByAny.cs" />
+    <Compile Include="ByEach.cs" />
     <Compile Include="ByStyles.cs" />
     <Compile Include="ByAttributes.cs" />
     <Compile Include="ByRegex.cs" />
@@ -79,6 +80,7 @@
     <Compile Include="ByXPath.cs" />
     <Compile Include="InternalUtils.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="UnitTests\ByEachUnitTests.cs" />
     <Compile Include="UnitTests\ByStylesUnitTests.cs" />
     <Compile Include="UnitTests\ByRegexUnitTests.cs" />
     <Compile Include="UnitTests\ByUnitTests.cs" />
@@ -95,7 +97,6 @@
   </ItemGroup>
   <ItemGroup />
   <ItemGroup>
-    <EmbeddedResource Include="BrowserScripts\ExistInAll.js" />
     <EmbeddedResource Include="BrowserScripts\GetElementsByAttributes.js" />
     <EmbeddedResource Include="BrowserScripts\GetElementsByRegExp.js" />
     <EmbeddedResource Include="BrowserScripts\GetElementsByStyles.js" />

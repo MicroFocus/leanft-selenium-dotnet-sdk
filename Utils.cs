@@ -4,7 +4,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     /// <summary>
     /// LeanFT for Selenium utilities.

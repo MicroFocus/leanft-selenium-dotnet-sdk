@@ -1,7 +1,7 @@
 ﻿using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     internal class ByVisible : By
     {

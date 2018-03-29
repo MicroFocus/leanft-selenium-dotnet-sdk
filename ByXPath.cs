@@ -1,7 +1,7 @@
 ﻿using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     internal class ByXPath : By
     {

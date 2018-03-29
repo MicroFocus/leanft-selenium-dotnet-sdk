@@ -1,9 +1,8 @@
 ﻿using System;
-using System.Collections;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     /// <summary>
     /// Contains all LeanFT for Selenium By methods for locating elements.

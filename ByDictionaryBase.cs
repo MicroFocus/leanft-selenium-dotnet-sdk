@@ -5,7 +5,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     internal abstract class ByDictionaryBase : By
     {

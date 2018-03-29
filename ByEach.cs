@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using OpenQA.Selenium;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     /// <summary>
     /// A locator that locates elements according to one or more locators (attributes, tags, styles etc.).

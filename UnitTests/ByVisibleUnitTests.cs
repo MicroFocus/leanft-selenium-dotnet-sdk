@@ -1,9 +1,8 @@
-﻿using System.Text.RegularExpressions;
-using Moq;
+﻿using Moq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace LeanFTForSelenium.UnitTests
+namespace LFT.Selenium.UnitTests
 {
     [TestFixture]
     class ByVisibleUnitTests

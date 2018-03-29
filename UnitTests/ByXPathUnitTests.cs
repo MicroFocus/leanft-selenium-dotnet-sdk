@@ -3,7 +3,7 @@ using NUnit.Framework;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Internal;
 
-namespace LeanFTForSelenium.UnitTests
+namespace LFT.Selenium.UnitTests
 {
     [TestFixture]
     class ByXPathUnitTests

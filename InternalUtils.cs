@@ -6,7 +6,7 @@ using System.IO;
 using System.Reflection;
 using System.Text.RegularExpressions;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     internal static class InternalUtils
     {

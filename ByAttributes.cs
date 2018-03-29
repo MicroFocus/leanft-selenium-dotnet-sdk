@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     internal class ByAttributes : ByDictionaryBase
     {

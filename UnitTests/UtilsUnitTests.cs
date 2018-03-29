@@ -6,7 +6,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using OpenQA.Selenium.Internal;
 
-namespace LeanFTForSelenium.UnitTests
+namespace LFT.Selenium.UnitTests
 {
     [TestFixture]
     class UtilsUnitTests

@@ -3,7 +3,7 @@ using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
-namespace LeanFTForSelenium
+namespace LFT.Selenium
 {
     internal class ByRegex : By
     {

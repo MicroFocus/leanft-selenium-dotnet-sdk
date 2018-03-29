@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 
-namespace LeanFTForSelenium.UnitTests
+namespace LFT.Selenium.UnitTests
 {
     [TestFixture]
     class ByUnitTests

@@ -71,6 +71,7 @@
   <ItemGroup>
     <Compile Include="By.cs" />
     <Compile Include="ByAny.cs" />
+    <Compile Include="ByDictionaryBase.cs" />
     <Compile Include="ByEach.cs" />
     <Compile Include="ByStyles.cs" />
     <Compile Include="ByAttributes.cs" />

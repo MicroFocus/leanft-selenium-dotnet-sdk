@@ -34,7 +34,7 @@ namespace LeanFTForSelenium.UnitTests
 
             _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(),
                 _webElementMock.Object,
-                It.Is<IDictionary<string, IDictionary<string, string>>>(expectedStyles => expectedStyles["a"]["type"] == "String" && expectedStyles["b"]["type"] == "String")), Times.Once);
+                It.Is<Dictionary<string, Dictionary<string, string>>>(expectedStyles => expectedStyles["a"]["type"] == "String" && expectedStyles["b"]["type"] == "String")), Times.Once);
         }
 
         [Test]
@@ -52,7 +52,7 @@ namespace LeanFTForSelenium.UnitTests
 
             _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(),
                 _webElementMock.Object,
-                It.Is<IDictionary<string, IDictionary<string, string>>>(expectedStyles => expectedStyles["a"]["type"] == "RegExp" && expectedStyles["b"]["type"] == "RegExp")), Times.Once);
+                It.Is<Dictionary<string, Dictionary<string, string>>>(expectedStyles => expectedStyles["a"]["type"] == "RegExp" && expectedStyles["b"]["type"] == "RegExp")), Times.Once);
         }
 
         [Test]
@@ -70,7 +70,7 @@ namespace LeanFTForSelenium.UnitTests
 
             _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(),
                 _webElementMock.Object,
-                It.Is<IDictionary<string, IDictionary<string, string>>>(expectedStyles => expectedStyles["a"]["type"] == "String" && expectedStyles["b"]["type"] == "RegExp")), Times.Once);
+                It.Is<Dictionary<string, Dictionary<string, string>>>(expectedStyles => expectedStyles["a"]["type"] == "String" && expectedStyles["b"]["type"] == "RegExp")), Times.Once);
         }
     }
 }

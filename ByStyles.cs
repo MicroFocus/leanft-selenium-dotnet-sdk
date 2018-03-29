@@ -1,50 +1,21 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Collections.ObjectModel;
-using System.Text.RegularExpressions;
-using OpenQA.Selenium;
+﻿using System.Collections.Generic;
 
 namespace LeanFTForSelenium
 {
-    internal class ByStyles : By
+    internal class ByStyles : ByDictionaryBase
     {
-        private readonly Lazy<string> _jsScript = new Lazy<string>(() => InternalUtils.GetScript("GetElementsByStyles.js"));
-        private readonly IDictionary<string, IDictionary<string, string>> _styles = new Dictionary<string, IDictionary<string, string>>();
-
-        public ByStyles(IDictionary<string, object> styles)
+        public ByStyles(IDictionary<string, object> styles) : base(styles)
         {
-            // We pass both the type and the value to the script that is executed in the browser,
-            // so the browser script will know how to work with the received string (string or regular expression).
-            foreach (var style in styles)
-            {
-                var styleValue = new Dictionary<string, string>
-                {
-                    {"type", style.Value is Regex ? "RegExp" : "String"},
-                    {"value", style.Value.ToString()}
-                };
-
-                _styles.Add(style.Key, styleValue);
-            }
         }
 
-        public override ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
+        protected override string GetScriptName()
         {
-            var executor = InternalUtils.GetExecutor(context);
-            var webElement = context as IWebElement;
-
-            var elements = (ReadOnlyCollection<IWebElement>)executor.ExecuteScript(
-                _jsScript.Value,
-                webElement,
-                _styles);
-
-            Description = "LeanFTForSelenium.By.Styles";
-
-            return elements;
+            return "GetElementsByStyles.js";
         }
 
-        public override IWebElement FindElement(ISearchContext context)
+        protected override string GetDescription()
         {
-            return FindElements(context)[0];
+            return "LeanFTForSelenium.By.Styles";
         }
     }
 }

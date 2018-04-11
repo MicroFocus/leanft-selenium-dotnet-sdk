@@ -43,7 +43,14 @@ namespace LFT.Selenium
 
         public override IWebElement FindElement(ISearchContext context)
         {
-            return FindElements(context)[0];
+            var elements = FindElements(context);
+
+            if (elements.Count == 0)
+            {
+                throw new NoSuchElementException(GetDescription() + ": Cannot locate an element using " + ToString());
+            }
+
+            return elements[0];
         }
 
         protected abstract string GetScriptName();

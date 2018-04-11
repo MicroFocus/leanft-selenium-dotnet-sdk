@@ -69,9 +69,9 @@ namespace LFT.Selenium.UnitTests
             var resultElements = byAny.FindElements(_webElementMock.Object);
 
             Assert.AreEqual(3, resultElements.Count);
-            Assert.True(resultElements.Contains(resultWebElementMock1.Object));
-            Assert.True(resultElements.Contains(resultWebElementMock2.Object));
-            Assert.True(resultElements.Contains(resultWebElementMock3.Object));
+            Assert.Contains(resultWebElementMock1.Object, resultElements);
+            Assert.Contains(resultWebElementMock2.Object, resultElements);
+            Assert.Contains(resultWebElementMock3.Object, resultElements);
         }
 
         [Test]

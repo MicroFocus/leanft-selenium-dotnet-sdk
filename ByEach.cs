@@ -37,11 +37,6 @@ namespace LFT.Selenium
                 intersection = new List<IWebElement>(intersection.Intersect(listOfByCollections[i]));
             }
 
-            if (intersection.Count == 0)
-            {
-                throw new NoSuchElementException("No element match all these Bys found.");
-            }
-
             return new ReadOnlyCollection<IWebElement>(intersection);
         }
 

@@ -37,7 +37,14 @@ namespace LFT.Selenium
 
         public override IWebElement FindElement(ISearchContext context)
         {
-            return FindElements(context)[0];
+            var elements = FindElements(context);
+
+            if (elements.Count == 0)
+            {
+                throw new NoSuchElementException("By." + _propertyName + ": Cannot locate an element using " + ToString());
+            }
+
+            return elements[0];
         }
 
         private ReadOnlyCollection<IWebElement> FindElementsByRegex(IJavaScriptExecutor executor, IWebElement element)

@@ -32,22 +32,14 @@ namespace LFT.Selenium.UnitTests
         [Test]
         public void FindElements_MoreThanOneBy_ShouldCallToFindElementsOfAllBys()
         {
-            var resultWebElementMock1 = new Mock<IWebElement>();
-            var resultWebElementMock2 = new Mock<IWebElement>();
-            var resultWebElementMock3 = new Mock<IWebElement>();
-
-            var result1List = new List<IWebElement>() { resultWebElementMock1.Object };
-            var result2List = new List<IWebElement>() { resultWebElementMock2.Object };
-            var result3List = new List<IWebElement>() { resultWebElementMock3.Object };
-
             var by1Mock = new Mock<OpenQA.Selenium.By>();
-            by1Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(result1List));
+            by1Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
 
             var by2Mock = new Mock<OpenQA.Selenium.By>();
-            by2Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(result2List));
+            by2Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
 
             var by3Mock = new Mock<OpenQA.Selenium.By>();
-            by3Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(result3List));
+            by3Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
 
             var byEach = new ByAny(by1Mock.Object, by2Mock.Object, by3Mock.Object);
 
@@ -59,24 +51,7 @@ namespace LFT.Selenium.UnitTests
         }
 
         [Test]
-        public void FindElements_ShouldThrowExceptionIfNoElementsFound()
-        {
-            var by1Mock = new Mock<OpenQA.Selenium.By>();
-            by1Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
-
-            var by2Mock = new Mock<OpenQA.Selenium.By>();
-            by2Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
-
-            var by3Mock = new Mock<OpenQA.Selenium.By>();
-            by3Mock.Setup(by => by.FindElements(It.IsAny<ISearchContext>())).Returns(() => new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
-
-            var byEach = new ByEach(by1Mock.Object, by2Mock.Object, by3Mock.Object);
-
-            Assert.Throws<NoSuchElementException>(() => byEach.FindElements(_webElementMock.Object));
-        }
-
-        [Test]
-        public void FindElement_ShouldReturnTheIntersectionOfAllBysFindElementsResults()
+        public void FindElements_ShouldReturnTheIntersectionOfAllBysFindElementsResults()
         {
             var resultWebElementMock1 = new Mock<IWebElement>();
             var resultWebElementMock2 = new Mock<IWebElement>();

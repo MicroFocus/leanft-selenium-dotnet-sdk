@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 using Moq;
 using NUnit.Framework;
@@ -71,6 +72,47 @@ namespace LFT.Selenium.UnitTests
             _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(),
                 _webElementMock.Object,
                 It.Is<Dictionary<string, Dictionary<string, string>>>(expectedAttributes => expectedAttributes["a"]["type"] == "String" && expectedAttributes["b"]["type"] == "RegExp")), Times.Once);
+        }
+
+        [Test]
+        public void FindElement_ShouldThrowExceptionIfNoElementsFound()
+        {
+            _javaScriptExecutorMock
+                .Setup(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(), It.IsAny<IWebElement>(), It.IsAny<Dictionary<string, Dictionary<string, string>>>()))
+                .Returns(new ReadOnlyCollection<IWebElement>(new List<IWebElement>()));
+
+            var byAttributes = new ByAttributes(new Dictionary<string, object>());
+
+            Assert.Throws<NoSuchElementException>(() => byAttributes.FindElement(_webElementMock.Object));
+        }
+
+        [Test]
+        public void FindElement_ShouldReturnFirstFoundElement()
+        {
+            var resultWebElementMock1 = new Mock<IWebElement>();
+            var resultWebElementMock2 = new Mock<IWebElement>();
+            var resultWebElementMock3 = new Mock<IWebElement>();
+
+            _javaScriptExecutorMock
+                .Setup(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(), It.IsAny<IWebElement>(), It.IsAny<Dictionary<string, Dictionary<string, string>>>()))
+                .Returns(new ReadOnlyCollection<IWebElement>(new List<IWebElement>
+                {
+                    resultWebElementMock1.Object,
+                    resultWebElementMock2.Object,
+                    resultWebElementMock3.Object
+                }));
+
+            var attributes = new Dictionary<string, object>
+            {
+                {"a", "1"},
+                {"b", "2"}
+            };
+
+            var byAttributes = new ByAttributes(attributes);
+
+            var resultElement = byAttributes.FindElement(_webElementMock.Object);
+
+            Assert.AreSame(resultWebElementMock1.Object, resultElement);
         }
     }
 }

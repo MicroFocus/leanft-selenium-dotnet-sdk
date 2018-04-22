@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
@@ -49,13 +50,15 @@ namespace LFT.Selenium
 
         private ReadOnlyCollection<IWebElement> FindElementsByRegex(IJavaScriptExecutor executor, IWebElement element)
         {
-            var elements = (ReadOnlyCollection<IWebElement>) executor.ExecuteScript(
+            var executionResult = executor.ExecuteScript(
                 _jsScript.Value,
                 element,
                 _tagsFilter,
                 _propertyName,
                 _pattern.ToString(),
                 InternalUtils.FlagsToString(_pattern));
+
+            var elements = executionResult as ReadOnlyCollection<IWebElement> ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
 
             return elements;
         }

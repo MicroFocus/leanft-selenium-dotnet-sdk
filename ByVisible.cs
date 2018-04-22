@@ -1,4 +1,5 @@
-﻿using System.Collections.ObjectModel;
+﻿using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using OpenQA.Selenium;
 
 namespace LFT.Selenium
@@ -18,10 +19,12 @@ namespace LFT.Selenium
             var executor = InternalUtils.GetExecutor(context);
             var webElement = context as IWebElement;
 
-            var elements = (ReadOnlyCollection<IWebElement>)executor.ExecuteScript(
+            var executionResult = executor.ExecuteScript(
                 _jsScript,
                 webElement,
                 _visible);
+
+            var elements = executionResult as ReadOnlyCollection<IWebElement> ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
 
             Description = string.Format("LFT.Selenium.By.Visible: {0}", _visible);
 

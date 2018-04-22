@@ -31,10 +31,12 @@ namespace LFT.Selenium
             var executor = InternalUtils.GetExecutor(context);
             var webElement = context as IWebElement;
 
-            var elements = (ReadOnlyCollection<IWebElement>) executor.ExecuteScript(
+            var executionResult = executor.ExecuteScript(
                 _jsScript.Value,
                 webElement,
                 _dictionary);
+
+            var elements = executionResult as ReadOnlyCollection<IWebElement> ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
 
             Description = GetDescription();
 

@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
@@ -27,12 +28,14 @@ namespace LFT.Selenium
             var executor = InternalUtils.GetExecutor(context);
             var webElement = context as IWebElement;
 
-            var elements = (ReadOnlyCollection<IWebElement>) executor.ExecuteScript(
+            var executionResult = executor.ExecuteScript(
                 _jsScript.Value,
                 _pattern.ToString(),
                 InternalUtils.FlagsToString(_pattern),
                 webElement,
                 _nonRegex);
+
+            var elements = executionResult as ReadOnlyCollection<IWebElement> ?? new ReadOnlyCollection<IWebElement>(new List<IWebElement>());
 
             Description = string.Format("LFT.Selenium.By.VisibleText: {0}", _pattern);
 

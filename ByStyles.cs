@@ -18,7 +18,7 @@
 
 using System.Collections.Generic;
 
-namespace LFT.Selenium
+namespace LeanFT.Selenium
 {
     internal class ByStyles : ByDictionaryBase
     {

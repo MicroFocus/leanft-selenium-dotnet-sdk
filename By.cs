@@ -20,7 +20,7 @@ using System;
 using System.Collections.Generic;
 using System.Text.RegularExpressions;
 
-namespace LFT.Selenium
+namespace LeanFT.Selenium
 {
     /// <summary>
     /// Contains all LeanFT for Selenium By methods for locating elements.

@@ -22,7 +22,7 @@ using OpenQA.Selenium;
 using System.Collections.ObjectModel;
 using System.Text.RegularExpressions;
 
-namespace LFT.Selenium
+namespace LeanFT.Selenium
 {
     internal class ByVisibleText : By
     {

@@ -22,7 +22,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using System.Threading;
 
-namespace LFT.Selenium
+namespace LeanFT.Selenium
 {
     /// <summary>
     /// LeanFT for Selenium utilities.

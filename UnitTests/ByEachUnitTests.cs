@@ -22,7 +22,7 @@ using Moq;
 using NUnit.Framework;
 using OpenQA.Selenium;
 
-namespace LFT.Selenium.UnitTests
+namespace LeanFT.Selenium.UnitTests
 {
     [TestFixture]
     class ByEachUnitTests

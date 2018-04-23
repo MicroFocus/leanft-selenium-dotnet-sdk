@@ -21,7 +21,7 @@ using System.Collections.Generic;
 using System.Text.RegularExpressions;
 using NUnit.Framework;
 
-namespace LFT.Selenium.UnitTests
+namespace LeanFT.Selenium.UnitTests
 {
     [TestFixture]
     class ByUnitTests

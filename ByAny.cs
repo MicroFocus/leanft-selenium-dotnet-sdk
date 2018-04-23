@@ -21,7 +21,7 @@ using System.Collections.ObjectModel;
 using System.Text;
 using OpenQA.Selenium;
 
-namespace LFT.Selenium
+namespace LeanFT.Selenium
 {
     /// <summary>
     /// A locator that locates elements according to any of the given locators (attributes, tags, styles etc.).

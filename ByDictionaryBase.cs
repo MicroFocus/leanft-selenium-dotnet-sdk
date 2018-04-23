@@ -23,7 +23,7 @@ using System.Linq;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium;
 
-namespace LFT.Selenium
+namespace LeanFT.Selenium
 {
     internal abstract class ByDictionaryBase : By
     {

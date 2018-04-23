@@ -24,7 +24,7 @@ using System.Collections.Generic;
 using System.Drawing;
 using OpenQA.Selenium.Internal;
 
-namespace LFT.Selenium.UnitTests
+namespace LeanFT.Selenium.UnitTests
 {
     [TestFixture]
     class UtilsUnitTests

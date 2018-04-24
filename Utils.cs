@@ -95,7 +95,8 @@ namespace LeanFT.Selenium
         /// Highlights the selenium elements in the browser for time milliseconds.
         /// </summary>
         /// <param name="element">The web element to highlight.</param>
-        /// <param name="time">The time (in milliseconds) that the element will be highlighted. In case of a negative number, the method throws an ArgumentException.</param>
+        /// <param name="time">The time (in milliseconds) that the element is highlighted. In case of a negative number, the method throws an ArgumentException.
+        /// If time is less than 150, the element is not highlighted.</param>
         public static void Highlight(this IWebElement element, int time)
         {
             if (element == null)

@@ -100,7 +100,7 @@ namespace LeanFT.Selenium
                 throw new ArgumentNullException("Cannot find elements when tagName is null.");
             }
 
-            return new ByRegex("tagName", tagName);
+            return new ByRegex("tagName", new Regex(tagName.ToString(), tagName.Options | RegexOptions.IgnoreCase));
         }
 
         /// <summary>

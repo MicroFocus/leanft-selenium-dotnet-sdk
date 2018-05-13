@@ -31,7 +31,6 @@ namespace LeanFT.Selenium
     {
         const int ExtraWaitTimeInMiliSec = 500;
         const int DefaultHighlightTimeInMiliSec = 3000;
-        const string PrepareForScreenshotScript = "var rect = arguments[0].getBoundingClientRect();return {left: rect.left,top:rect.top,width:rect.width,height:rect.height};";
         private static readonly Lazy<string> HighlightFunction = new Lazy<string>(() => InternalUtils.GetScript("Highlight.js"));
         private static readonly Lazy<string> ScrollIntoViewFunction = new Lazy<string>(() => InternalUtils.GetScript("ScrollIntoView.js"));
         private static readonly Lazy<string> SnapshotFunction = new Lazy<string>(() => InternalUtils.GetScript("Snapshot.js"));
@@ -50,16 +49,8 @@ namespace LeanFT.Selenium
 
             var webDriver = InternalUtils.GetWebDriver(element);
             var executor = InternalUtils.GetExecutor(element);
-            Dictionary<string, object> elementLocationAndSize;
 
-            if (InternalUtils.IsVisible(element))
-            {
-                elementLocationAndSize = (Dictionary<string, object>) executor.ExecuteScript(PrepareForScreenshotScript, element);
-            }
-            else
-            {
-                elementLocationAndSize = (Dictionary<string, object>) executor.ExecuteScript(SnapshotFunction.Value, element);
-            }
+            var elementLocationAndSize = (Dictionary<string, object>) executor.ExecuteScript(SnapshotFunction.Value, element);
 
             var elementRectangle = new Rectangle(
                 Convert.ToInt32(elementLocationAndSize["left"]),

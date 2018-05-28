@@ -19,7 +19,7 @@
     <projectUrl>https://github.com/MicroFocus/leanft-selenium-dotnet-sdk</projectUrl>
 
     <!-- The icon is used in Visual Studio's package manager UI -->
-    <!--<iconUrl>https://github.com/MicroFocus/leanft-selenium-dotnet-sdk/Resources/leanft.png</iconUrl>-->
+    <iconUrl>https://github.com/MicroFocus/leanft-selenium-dotnet-sdk/blob/master/Resources/LeanFT_64x64.png</iconUrl>
 
     <!-- If true, this value prompts the user to accept the license when
             installing the package. -->

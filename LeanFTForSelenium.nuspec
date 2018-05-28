@@ -4,6 +4,9 @@
     <!-- The identifier that must be unique within the hosting gallery -->
     <id>LeanFT.Selenium</id>
 
+    <!-- A human-friendly title of the package -->
+    <title>LeanFT for Selenium DotNet (C#) SDK</title>
+
     <!-- The package version number that is used when resolving dependencies -->
     <version>$version$</version>
 
@@ -19,7 +22,7 @@
     <projectUrl>https://github.com/MicroFocus/leanft-selenium-dotnet-sdk</projectUrl>
 
     <!-- The icon is used in Visual Studio's package manager UI -->
-    <iconUrl>https://github.com/MicroFocus/leanft-selenium-dotnet-sdk/blob/master/Resources/LeanFT_64x64.png</iconUrl>
+    <iconUrl>https://github.com/MicroFocus/leanft-selenium-dotnet-sdk/blob/master/Resources/LeanFT_64x64.png?raw=true</iconUrl>
 
     <!-- If true, this value prompts the user to accept the license when
             installing the package. -->
@@ -31,6 +34,9 @@
     <!-- The description can be used in package manager UI. Note that the
             nuget.org gallery uses information you add in the portal. -->
     <description>LeanFT for Selenium DotNet (C#) SDK that extends the WebDriver API with additional locators and utilities.</description>
+    
+    <!-- The summary of the package -->
+    <summary>LeanFT for Selenium DotNet (C#) SDK that extends the WebDriver API with additional locators and utilities.</summary>
 
     <!-- Copyright information -->
     <copyright>$copyright$</copyright>

@@ -28,10 +28,10 @@ namespace LeanFT.Selenium
     public abstract class By : OpenQA.Selenium.By
     {
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression name parameter.
+        /// Returns a locator that locates elements by the specified name, described using a regular expression.
         /// </summary>
         /// <param name="name">The name of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given name.</returns>
+        /// <returns>A locator that locates elements with the specified name.</returns>
         public static By Name(Regex name)
         {
             if (name == null)
@@ -43,10 +43,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression ID parameter.
+        /// Returns a locator that locates elements by the specified ID, described using a regular expression.
         /// </summary>
         /// <param name="id">The ID of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given ID.</returns>
+        /// <returns>A locator that locates elements with the specified ID.</returns>
         public static By Id(Regex id)
         {
             if (id == null)
@@ -59,10 +59,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression className parameter.
+        /// Returns a locator that locates elements by the specified className, described using a regular expression.
         /// </summary>
         /// <param name="className">The className of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given className.</returns>
+        /// <returns>A locator that locates elements with the specified className.</returns>
         public static By ClassName(Regex className)
         {
             if (className == null)
@@ -74,10 +74,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression linkText parameter.
+        /// Returns a locator that locates elements by the specified linkText, described using a regular expression.
         /// </summary>
         /// <param name="linkText">The linkText of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given linkText.</returns>
+        /// <returns>A locator that locates elements with the specified linkText.</returns>
         public static By LinkText(Regex linkText)
         {
             if (linkText == null)
@@ -89,10 +89,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression tagName parameter.
+        /// Returns a locator that locates elements by the specified tagName, described using a regular expression.
         /// </summary>
         /// <param name="tagName">The tagName of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given tagName.</returns>
+        /// <returns>A locator that locates elements with the specified tagName.</returns>
         public static By TagName(Regex tagName)
         {
             if (tagName == null)
@@ -104,10 +104,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided role parameter.
+        /// Returns a locator that locates elements by the specified role.
         /// </summary>
         /// <param name="role">The role of the elements.</param>
-        /// <returns>A locator that locates elements with the given role.</returns>
+        /// <returns>A locator that locates elements with the specified role.</returns>
         public static By Role(string role)
         {
             if (string.IsNullOrWhiteSpace(role))
@@ -119,10 +119,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression role parameter.
+        /// Returns a locator that locates elements by the specified role, described using a regular expression.
         /// </summary>
         /// <param name="role">The role of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given role.</returns>
+        /// <returns>A locator that locates elements with the specified role.</returns>
         public static By Role(Regex role)
         {
             if (role == null)
@@ -137,7 +137,7 @@ namespace LeanFT.Selenium
         /// Returns a locator that locates elements by the provided type parameter.
         /// </summary>
         /// <param name="type">The type of the elements.</param>
-        /// <returns>A locator that locates elements with the given type.</returns>
+        /// <returns>A locator that locates elements with the specified type.</returns>
         public static By Type(string type)
         {
             if (string.IsNullOrWhiteSpace(type))
@@ -149,10 +149,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates elements by the provided regular expression type parameter.
+        /// Returns a locator that locates elements by the specified type, described using a regular expression.
         /// </summary>
-        /// <param name="type">The role of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements with the given type.</returns>
+        /// <param name="type">The type of the elements in the form of a regular expression.</param>
+        /// <returns>A locator that locates elements with the specified type.</returns>
         public static By Type(Regex type)
         {
             if (type == null)
@@ -167,7 +167,7 @@ namespace LeanFT.Selenium
         /// Returns a locator that locates elements by the provided visibleText parameter.
         /// </summary>
         /// <param name="visibleText">The visible text of the elements.</param>
-        /// <returns>A locator that locates elements by the visible text.</returns>
+        /// <returns>A locator that locates elements whose visible text matches the specified text.</returns>
         public static By VisibleText(string visibleText)
         {
             if (string.IsNullOrWhiteSpace(visibleText))
@@ -179,10 +179,10 @@ namespace LeanFT.Selenium
         }
 
         /// <summary>
-        /// Returns a locator that locates element by the provided regular expression visibleText parameter.
+        /// Returns a locator that locates element by the specified visibleText, described using a regular expression.
         /// </summary>
         /// <param name="visibleText">The visible text of the elements in the form of a regular expression.</param>
-        /// <returns>A locator that locates elements by the visible text.</returns>
+        /// <returns>A locator that locates elements whose visible text matches the specified text.</returns>
         public static By VisibleText(Regex visibleText)
         {
             if (visibleText == null)
@@ -207,7 +207,7 @@ namespace LeanFT.Selenium
         /// Returns a locator that locates elements according to one or more attributes. You can also use regular expressions.
         /// </summary>
         /// <param name="attributes">Dictionary of attributes.</param>
-        /// <returns>A locator that locates elements by their attributes.</returns>
+        /// <returns>A locator that locates elements that have the specified attribute values.</returns>
         public static By Attributes(IDictionary<string, object> attributes)
         {
             if (attributes == null)
@@ -228,18 +228,18 @@ namespace LeanFT.Selenium
         /// </summary>
         /// <param name="name">The name of the attribute.</param>
         /// <param name="value">The value of the attribute.</param>
-        /// <returns>A locator that locates elements by an attribute.</returns>
+        /// <returns>A locator that locates elements that have the specified attribute value.</returns>
         public static By Attribute(string name, string value)
         {
             return Attribute(name, (object) value);
         }
 
         /// <summary>
-        /// Returns a locator that locates elements according to a single attribute.
+        /// Returns a locator that locates elements according to a single attribute, described using a regular expression.
         /// </summary>
         /// <param name="name">The name of the attribute.</param>
         /// <param name="value">The Pattern of the attribute.</param>
-        /// <returns>A locator that locates elements by an attribute.</returns>
+        /// <returns>A locator that locates elements whose attribute value matches the specified pattern.</returns>
         public static By Attribute(string name, Regex value)
         {
             return Attribute(name, (object) value);
@@ -259,7 +259,7 @@ namespace LeanFT.Selenium
         /// Returns a locator that locates elements according to one or more styles. You can also use regular expressions.
         /// </summary>
         /// <param name="styles">Dictionary of styles.</param>
-        /// <returns>A locator that locates elements by their styles.</returns>
+        /// <returns>A locator that locates elements with the specified styles.</returns>
         public static By Styles(IDictionary<string, object> styles)
         {
             if (styles == null)
@@ -280,18 +280,18 @@ namespace LeanFT.Selenium
         /// </summary>
         /// <param name="name">The name of the style.</param>
         /// <param name="value">The value of the style.</param>
-        /// <returns>A locator that locates elements by an style.</returns>
+        /// <returns>A locator that locates elements with the specified style.</returns>
         public static By Style(string name, string value)
         {
             return Style(name, (object) value);
         }
 
         /// <summary>
-        /// Returns a locator that locates elements according to a single style.
+        /// Returns a locator that locates elements according to a single style, described using a regular expression.
         /// </summary>
         /// <param name="name">The name of the style.</param>
         /// <param name="value">The Pattern of the style.</param>
-        /// <returns>A locator that locates elements by an style.</returns>
+        /// <returns>A locator that locates elements whose style matches the specified pattern.</returns>
         public static By Style(string name, Regex value)
         {
             return Style(name, (object) value);

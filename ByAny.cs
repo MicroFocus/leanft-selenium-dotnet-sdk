@@ -24,14 +24,14 @@ using OpenQA.Selenium;
 namespace LeanFT.Selenium
 {
     /// <summary>
-    /// A locator that locates elements according to any of the given locators (attributes, tags, styles etc.).
+    /// A locator that locates elements that match one or more of the specified locators (attributes, tags, styles etc.).
     /// </summary>
     public class ByAny : By
     {
         private readonly OpenQA.Selenium.By[] _bys;
 
         /// <summary>
-        /// * A constructor for the ByAny locator.
+        /// A constructor for the ByAny locator.
         /// </summary>
         /// <param name="bys">The locators (Bys) by which the elements should be identified.</param>
         public ByAny(params OpenQA.Selenium.By[] bys)

@@ -25,7 +25,7 @@ using OpenQA.Selenium;
 namespace LeanFT.Selenium
 {
     /// <summary>
-    /// A locator that locates elements according to one or more locators (attributes, tags, styles etc.).
+    /// A locator that locates elements that match all specified locators (attributes, tags, styles etc.).
     /// </summary>
     public class ByEach : By
     {

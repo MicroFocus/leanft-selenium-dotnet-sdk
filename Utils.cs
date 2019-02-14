@@ -130,11 +130,7 @@ namespace LeanFT.Selenium
 
             var executor = InternalUtils.GetExecutor(element);
 
-            // Scroll into the view.
-            if (!InternalUtils.IsVisible(element))
-            {
-                executor.ExecuteScript(ScrollIntoViewFunction.Value, element);
-            }
+            executor.ExecuteScript(ScrollIntoViewFunction.Value, element);
         }
     }
 }

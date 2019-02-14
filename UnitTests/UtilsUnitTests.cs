@@ -66,33 +66,6 @@ namespace LeanFT.Selenium.UnitTests
         }
 
         [Test]
-        public void GetSnapshot_ElementIsVisible_PrepareForScreenshotScriptIsExecuted()
-        {
-            const string prepareForScreenshotScript = "var rect = arguments[0].getBoundingClientRect();return {left: rect.left,top:rect.top,width:rect.width,height:rect.height};";
-
-            _webElementMock.SetupGet(element => element.Size).Returns(new Size(50, 50));
-            _webElementMock.SetupGet(element => element.Location).Returns(new Point(50, 50));
-
-            _windowMock.SetupGet(window => window.Size).Returns(new Size(500, 500));
-            _windowMock.SetupGet(window => window.Position).Returns(new Point(0, 0));
-
-            var elementLocationAndSize = new Dictionary<string, object>
-            {
-                {"left", 0},
-                {"top", 0},
-                {"width", 20.0},
-                {"height", 20.0}
-            };
-
-            _javaScriptExecutorMock.Setup(executor => executor.ExecuteScript(It.IsAny<string>(), _webElementMock.Object))
-                .Returns(elementLocationAndSize);
-
-            Utils.GetSnapshot(_webElementMock.Object);
-
-            _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(prepareForScreenshotScript, _webElementMock.Object), Times.Once);
-        }
-
-        [Test]
         public void GetSnapshot_ElementIsNotVisible_ScreenshotScriptIsExecuted()
         {
             _webElementMock.SetupGet(element => element.Size).Returns(new Size(50, 50));
@@ -196,20 +169,6 @@ namespace LeanFT.Selenium.UnitTests
             Utils.ScrollIntoView(_webElementMock.Object);
 
             _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(InternalUtils.GetScript("ScrollIntoView.js"), _webElementMock.Object), Times.Once);
-        }
-
-        [Test]
-        public void ScrollIntoView_ElementVisible_ExecutorDoesNotExecuteScript()
-        {
-            _webElementMock.SetupGet(element => element.Size).Returns(new Size(50, 50));
-            _webElementMock.SetupGet(element => element.Location).Returns(new Point(50, 50));
-
-            _windowMock.SetupGet(window => window.Size).Returns(new Size(500, 500));
-            _windowMock.SetupGet(window => window.Position).Returns(new Point(0, 0));
-
-            Utils.ScrollIntoView(_webElementMock.Object);
-
-            _javaScriptExecutorMock.Verify(javaScriptExecutor => javaScriptExecutor.ExecuteScript(It.IsAny<string>(), _webElementMock.Object), Times.Never);
         }
     }
 }

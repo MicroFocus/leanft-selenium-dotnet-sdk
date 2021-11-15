@@ -1,4 +1,4 @@
-﻿/*! (c) Copyright 2015 - 2018 Micro Focus or one of its affiliates. */
+﻿/*! (c) Copyright 2015 - 2021 Micro Focus or one of its affiliates. */
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // You may not use this file except in compliance with the License.
@@ -17,7 +17,6 @@
 // limitations under the License.
 
 using OpenQA.Selenium;
-using OpenQA.Selenium.Internal;
 
 namespace LeanFT.Selenium
 {
@@ -34,12 +33,12 @@ namespace LeanFT.Selenium
 
         public override System.Collections.ObjectModel.ReadOnlyCollection<IWebElement> FindElements(ISearchContext context)
         {
-            return ((IFindsByXPath) context).FindElementsByXPath(string.Format(".//*[@{0} = '{1}']", _attributeName, _xPath));
+            return context.FindElements(By.XPath(string.Format(".//*[@{0} = '{1}']", _attributeName, _xPath)));
         }
 
         public override IWebElement FindElement(ISearchContext context)
         {
-            return ((IFindsByXPath) context).FindElementByXPath(string.Format(".//*[@{0} = '{1}']", _attributeName, _xPath));
+            return context.FindElement(By.XPath(string.Format(".//*[@{0} = '{1}']", _attributeName, _xPath)));
         }
     }
 }

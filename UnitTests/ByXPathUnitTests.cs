@@ -1,4 +1,4 @@
-﻿/*! (c) Copyright 2015 - 2018 Micro Focus or one of its affiliates. */
+﻿/*! (c) Copyright 2015 - 2021 Micro Focus or one of its affiliates. */
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // You may not use this file except in compliance with the License.
@@ -19,7 +19,6 @@
 using Moq;
 using NUnit.Framework;
 using OpenQA.Selenium;
-using OpenQA.Selenium.Internal;
 
 namespace LeanFT.Selenium.UnitTests
 {
@@ -27,13 +26,13 @@ namespace LeanFT.Selenium.UnitTests
     class ByXPathUnitTests
     {
         private Mock<IWebElement> _webElementMock;
-        private Mock<IFindsByXPath> _findsByXPathMock;
+        private Mock<ISearchContext> _findsByXPathMock;
 
         [SetUp]
         public void BeforeEach()
         {
             _webElementMock = new Mock<IWebElement>();
-            _findsByXPathMock = _webElementMock.As<IFindsByXPath>();
+            _findsByXPathMock = _webElementMock.As<ISearchContext>();
         }
 
         [Test]
@@ -46,7 +45,7 @@ namespace LeanFT.Selenium.UnitTests
 
             byXPath.FindElements(_webElementMock.Object);
 
-            _findsByXPathMock.Verify(findsByXPath => findsByXPath.FindElementsByXPath(".//*[@attr = 'xpath']"), Times.Once);
+            _findsByXPathMock.Verify(findsByXPath => findsByXPath.FindElements(By.XPath(".//*[@attr = 'xpath']")), Times.Once);
         }
 
         [Test]
@@ -59,7 +58,7 @@ namespace LeanFT.Selenium.UnitTests
 
             byXPath.FindElement(_webElementMock.Object);
 
-            _findsByXPathMock.Verify(findsByXPath => findsByXPath.FindElementByXPath(".//*[@attr = 'xpath']"), Times.Once);
+            _findsByXPathMock.Verify(findsByXPath => findsByXPath.FindElement(By.XPath(".//*[@attr = 'xpath']")), Times.Once);
         }
     }
 }

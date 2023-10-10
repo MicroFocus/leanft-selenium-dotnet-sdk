@@ -6,7 +6,7 @@ using System.Runtime.InteropServices;
 // associated with an assembly.
 [assembly: AssemblyTitle("LeanFTForSelenium")]
 [assembly: AssemblyDescription("LeanFT for Selenium DotNet SDK")]
-[assembly: AssemblyCompany("MicroFocus")]
+[assembly: AssemblyCompany("OpenText")]
 [assembly: AssemblyProduct("LeanFTForSelenium")]
 [assembly: AssemblyCopyright("Copyright © Software Freedom Conservancy 2018")]
 
